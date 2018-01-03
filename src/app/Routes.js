@@ -11,11 +11,11 @@ import Search from '../search/Search';
 export default () => (
   <Switch>
     <Route path="/auth" render={() => <Auth />} />;
-    <PrivateRoute exact path="/" Component={Home} />;
+    <PrivateRoute exact path="/home" Component={Home} />;
     <PrivateRoute exact path="/upload" Component={UploadForm} />;
     <PrivateRoute exact path="/search" Component={Search} />;
     <PrivateRoute exact path="/experiences/:id" render={({ match }) => <Experience id={match.params.id} />} />
-    <PrivateRoute exact path="/MyExperiences" Component={MyExp} />;
+    <PrivateRoute exact path="/shared" Component={MyExp} />;
     <Redirect to="/" />
   </Switch>
 );

@@ -26,7 +26,7 @@ export class App extends Component {
             </div>
           }
           {loading && <Loading/>}
-          { error && <Error/>}
+          {error && <Error/>}
         </div>
       </Router>
     );

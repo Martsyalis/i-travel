@@ -17,7 +17,6 @@ export class Experience extends PureComponent {
     this.props.loadExp(this.props.id);
     this.startListener();
   }
-
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleArrows);
   }
@@ -71,7 +70,6 @@ export class Experience extends PureComponent {
 
   render() {
     if (!this.searchedExp()) return <div>Page not available</div>;
-
     return (
       <div>
         <section className="hero is-dark is-bold">

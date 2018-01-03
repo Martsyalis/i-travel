@@ -26,7 +26,7 @@
     "copy": "rm -rf ../i-travel-server/public && cp -R ./build ../i-travel-server/public",
     "start": "react-scripts start",
     "build": "react-scripts build && npm run copy",
-    "pretest":"eslint src",
+    "pretest": "eslint src",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

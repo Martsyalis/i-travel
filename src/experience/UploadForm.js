@@ -82,7 +82,7 @@ export class UploadForm extends PureComponent {
               </div>
               <button type="submit">Add</button>
             </form>
-            {this.state.redirect && <Redirect to="/MyExperiences" />}
+            {this.state.redirect && <Redirect to="/myExperiences" />}
           </div>
         </div>
       </div>
