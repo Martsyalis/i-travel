@@ -55,12 +55,13 @@ export function signup(user) {
   };
 }
 
-export function UpdateProfile(data){
+export function updateProfile(data){
   return {
     type:actions.UPDATE_PROFILE,
     payload: authApi.updateUser(data)
   };
 }
+
 export function signout() {
   return { type: actions.LOGOUT };
 }

@@ -9,14 +9,14 @@ class Header extends PureComponent {
     return (
       <div className="header">
         <nav className="breadcrumb">
-            <NavLinkWrap to="/home"/>
-            <NavLinkWrap to="/search"/>            
-            <NavLinkWrap to="/upload"/>
-            <NavLinkWrap to="/shared"/>
-            {this.props.user 
-              ? <NavLink to="/" onClick={this.props.signout}> Sign Out </NavLink>
-              : <NavLink to="/auth/signin"> Sign In </NavLink>
-            }
+          <NavLinkWrap to="/home"/>
+          <NavLinkWrap to="/search"/>            
+          <NavLinkWrap to="/upload"/>
+          <NavLinkWrap to="/shared"/>
+          {this.props.user 
+            ? <NavLink activeClassName="active" to="/" onClick={this.props.signout}> Sign Out </NavLink>
+            : <NavLink activeClassName="active" to="/auth/signin"> Sign In </NavLink>
+          }
         </nav>
       </div>
     );

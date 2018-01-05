@@ -6,10 +6,7 @@ class NavLinkWrap extends PureComponent{
   render() {
     return (
       <NavLink to ={this.props.to}
-        activeStyle={{
-          fontWeight: 'bold',
-          color: 'red'
-        }}
+        activeClassName="active"
         className="navbar-item"
       >
         {this.props.to === '/home'

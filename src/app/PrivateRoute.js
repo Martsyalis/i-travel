@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class PrivateRoute extends PureComponent {
   render() {
-    const { Component, render, user, ...rest } = this.props;
+    const { component : Component, render, user, ...rest } = this.props;
     return(
       <Route {...rest} render={props => {
         if(user) {

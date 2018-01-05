@@ -8,12 +8,14 @@ export default ({ dispatch }) => next => async action => {
   const { type, payload } = action;
   dispatch({ type: LOADING });
   
-  try {
-    dispatch({ type: LOADED });    
+  try {  
+    const result = await payload;
     dispatch({ 
       type, 
-      payload: await payload
+      payload: result
     });
+    dispatch({ type: LOADED }); 
+    return result; 
   }
 
   catch(err) {

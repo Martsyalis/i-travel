@@ -19,21 +19,20 @@ export class Search extends PureComponent {
         <section className="hero is-dark">
           <div className="hero-body">
             <div className="container">
-              <h1 className="title">Hey {this.props.user.name}</h1>
-              <h2 className="subtitle">Please enter your Search</h2>
+              <h2 className="title">Search</h2>
             </div>
           </div>
         </section>
-        <div className="tile">
-          <form onSubmit={this.handleSearch}>
+        <div className="level">
+          <form className="level-item" onSubmit={this.handleSearch}>
             <div className="field">
-              <label className="label">Location</label>
+              <label className="label"></label>
               <div className="control">
                 <input name="location" placeholder="location" />
               </div>
             </div>
             <div className="field">
-              <label className="label">Tag</label>
+              <label className="label"></label>
               <div className="control">
                 <input name="tag" placeholder="tag" />
               </div>

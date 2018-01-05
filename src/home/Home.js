@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Feed from './Feed';
 import { connect } from 'react-redux';
 import { loadExpByUser } from '../experience/actions';
-import { UpdateProfile } from '../auth/actions';
+import { updateProfile } from '../auth/actions';
 
 const defaultImg = 'http://www.beautythis.com/themes/comb/img/avatar/default-avatar-male_11.png';
 export class Home extends PureComponent {
@@ -14,7 +14,7 @@ export class Home extends PureComponent {
     const form = event.target;
     const profile = new FormData(form);
     form.reset();
-    this.props.UpdateProfile(profile);
+    this.props.updateProfile(profile);
   };
 
   render() {
@@ -87,5 +87,5 @@ export class Home extends PureComponent {
 }
 export default connect(
   state => ({ user: state.auth.user, exp: state.experiences }),
-  { loadExpByUser, UpdateProfile }
+  { loadExpByUser, updateProfile }
 )(Home);
