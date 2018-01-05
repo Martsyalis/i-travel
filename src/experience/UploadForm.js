@@ -1,30 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { addExperience } from './actions';
-
-
-// const FieldControl = ({ children }) => {
-//   return (
-//     <div className="field">
-//       <div className="control">
-//         {children}
-//       </div>
-//     </div>
-//   );
-// };
-
-const InputField = ({ fieldName }) => (
-  <div className="field">
-    <div className="control">
-      <input
-        name= {fieldName}
-        className="input"
-        type="text"
-        placeholder={fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}
-      />
-    </div>
-  </div>
-);
+import InputField from '../commonComponents/InputField';
 
 export class UploadForm extends PureComponent {
 

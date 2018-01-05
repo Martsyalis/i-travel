@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loadSearch } from './actions';
 import stock from '../home/favicon.png';
+import InputField from '../commonComponents/InputField';
 
 export class Search extends PureComponent {
     
@@ -25,18 +26,8 @@ export class Search extends PureComponent {
         </section>
         <div className="level">
           <form className="level-item" onSubmit={this.handleSearch}>
-            <div className="field">
-              <label className="label"></label>
-              <div className="control">
-                <input name="location" placeholder="location" />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label"></label>
-              <div className="control">
-                <input name="tag" placeholder="tag" />
-              </div>
-            </div>
+            <InputField fieldName="location"/>
+            <InputField fieldName="tags"/>
             <button type="submit">Search</button>
           </form>
         </div>
