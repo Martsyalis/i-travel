@@ -2,28 +2,43 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loadSearch } from './actions';
-import stock from '../home/favicon.png';
-import InputField from '../commonComponents/InputField';
+import styled from 'styled-components';
+import { InputField, Hero } from '../commonComponents/common';
 
+class Results extends PureComponent {
+
+  render() {
+    const { results } = this.props;
+    if(!results) return <div> No Matching Experiences found </div>;
+    return (
+      <div style={{ display:'flex', marginLeft:'10%' }}>
+        <ResultsDiv>
+          {results.filter(exp => exp.images.length > 0).map(exp =>(
+            <Link key={exp._id} to={`experiences/${exp._id}`}>
+              <StyledImg src={exp.images[0].imageURI} alt={exp.images[0].caption}/>
+            </Link>
+          ))}
+        </ResultsDiv>
+      </div>
+    );
+  }
+}
 export class Search extends PureComponent {
+  componentDidMount() {
+    this.props.loadSearch();
+  }
     
   handleSearch = event => {
     event.preventDefault();
     const { elements } = event.target;
-    const query = `?location=${elements.location.value}&tag=${elements.tag.value}`;
+    const query = `?location=${elements.location.value}&tag=${elements.tags.value}`;
     this.props.loadSearch(query);
   };
 
   render() {
     return (
       <div>
-        <section className="hero is-dark">
-          <div className="hero-body">
-            <div className="container">
-              <h2 className="title">Search</h2>
-            </div>
-          </div>
-        </section>
+        <Hero title='Search'/>
         <div className="level">
           <form className="level-item" onSubmit={this.handleSearch}>
             <InputField fieldName="location"/>
@@ -31,31 +46,9 @@ export class Search extends PureComponent {
             <button type="submit">Search</button>
           </form>
         </div>
-        {this.props.search.length !== 0 ? (
-          <div>
-            <ul style={{ display: 'flex' }}>
-              {this.props.search.map((exp, i) => (
-                <div key={i}>
-                  {exp.images && exp.images[0] && 
-              <div>
-                <Link to={`experiences/${exp._id}`}><img style={{ objectFit:'cover',width: '200px',height: '120px', margin: '10px' }} src={exp.images[0].imageURI} alt={exp.images[0].caption}/></Link>
-              </div>
-                  }
-                  {exp.images && !exp.images[0] &&
-              <div>
-                <div>
-                  <Link to={`experiences/${exp._id}`}><img style={{ objectFit:'cover',width: '150px',height: '120px', margin: '10px' }} src={stock} alt='none'/></Link>
-                </div>
-                <p style={{ textAlign:'center' }}>{exp.location}</p>
-              </div>
-                  }
-                </div>
-              ))}
-            </ul>
-          </div>
-        ) : (
-          <div> No results </div>
-        )}
+        <div className="column is-four-fifths is-light">
+          <Results results ={this.props.search}/>
+        </div>
       </div>
     );
   }
@@ -65,3 +58,18 @@ export default connect(
   state => ({ user: state.auth.user, search: state.search }),
   { loadSearch }
 )(Search);
+
+const ResultsDiv = styled.div`
+height: 100px;
+display: grid;
+grid-template-areas: "a a a";
+grid-gap: 10px;
+grid-auto-columns: 250px;
+`;
+
+const StyledImg = styled.img`
+height: 200px;
+margin: 1% 0;
+width: 300px;
+objectFit: 'cover';
+`;

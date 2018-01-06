@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function InputField({ fieldName, type = 'text' }){
+export function InputField({ fieldName, type = 'text' }){
   return(
     <div className="field">
       <div className="control">
@@ -14,3 +14,16 @@ export default function InputField({ fieldName, type = 'text' }){
     </div>
   );
 }
+
+export function Hero({ title }){
+  return (
+    <section className="hero is-dark">
+      <div className="hero-body">
+        <div className="container">
+          <h2 className="title">{title}</h2>
+        </div>
+      </div>
+    </section>
+  );
+}
+

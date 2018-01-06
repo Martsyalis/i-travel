@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { addExperience } from './actions';
-import InputField from '../commonComponents/InputField';
+import { InputField, Hero } from '../commonComponents/common';
 
 export class UploadForm extends PureComponent {
 
@@ -23,13 +23,7 @@ export class UploadForm extends PureComponent {
   render() {
     return (
       <div>
-        <section className="hero is-dark">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title">New Experience</h1>
-            </div>
-          </div>
-        </section>
+        <Hero title="Upload"/>
         <div className="level">
           <form className="level-item" onSubmit={this.handleExpPost}>
             <InputField fieldName="title"/>
