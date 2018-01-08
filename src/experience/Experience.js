@@ -150,7 +150,6 @@ width: 70%;
 margin: auto;
 display: 'flex';
 justify-content: flex-center;
-
 `;
 
 const ImgDiv = styled.div`
