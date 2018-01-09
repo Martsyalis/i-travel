@@ -14,7 +14,7 @@ export default () => (
     <Route exact path="/search" render={()=> <Search />}/>;
     <PrivateRoute exact path="/home" component={Home} />;
     <PrivateRoute exact path="/upload" component={UploadForm} />;
-    <PrivateRoute exact path="/experiences/:id" render={({ match }) => <Experience id={match.params.id} />} />
+    <Route exact path="/experiences/:id" render={({ match }) => <Experience id={match.params.id} />} />
     <PrivateRoute exact path="/shared" component={MyExp} />;
     <Redirect to="/" />
   </Switch>

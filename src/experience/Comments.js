@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import io from 'socket.io-client';
+const socket = io();
 
 export default class Comments extends PureComponent {
   
@@ -16,6 +18,9 @@ export default class Comments extends PureComponent {
         <form onSubmit={event => {
           event.preventDefault();
           const { target: form } = event;
+          socket.on('chat', msg=> {
+            this.props.loadExp();
+          });
           onPost(form.elements.comment.value);
           form.reset();
         }}> 

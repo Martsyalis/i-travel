@@ -8,6 +8,9 @@ import {
   addCommentToExp
 } from './actions';
 import styled from 'styled-components';
+import io from 'socket.io-client';
+const socket = io();
+
 
 export class Experience extends PureComponent {
   state = {
@@ -18,6 +21,12 @@ export class Experience extends PureComponent {
     this.props.loadExp(this.props.id);
     this.startListener();
   }
+
+  HandleReload = ()=>{
+    console.log('reloading');
+    this.props.loadExp(this.props.id);
+  }
+
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleArrows);
   }
@@ -45,7 +54,8 @@ export class Experience extends PureComponent {
 
   handleCommentPost = comment => {
     const { id, user, addCommentToExp } = this.props;
-    addCommentToExp(id, { user: user.name, comment });
+    const name = (user) ? user.name : 'guest';
+    addCommentToExp(id, { name, comment }).then(()=> socket.emit('chat', comment));
   }
 
   handleDelete = imageId => {
@@ -73,7 +83,7 @@ export class Experience extends PureComponent {
             </div>
           </div>
         </section>
-        { experience.user.email === this.props.user.email
+        { this.props.user && experience.user.email === this.props.user.email
          && <button className="button" onClick={()=>{
            this.state.shouldDisplay
              ? this.setState({ shouldDisplay: false })
@@ -107,7 +117,7 @@ export class Experience extends PureComponent {
                     <p style={{ marginLeft: '40%' }}> {img.caption} </p>
                   </StyledImgDiv>
                   <div>
-                    { experience.user.email === this.props.user.email
+                    {this.props.user && experience.user.email === this.props.user.email
                      &&<DeleteButton className ="delete" onClick={() => this.handleDelete(img._id)}>X</DeleteButton>
                     }
                   </div>
@@ -126,7 +136,7 @@ export class Experience extends PureComponent {
           <h5> Have questions? shoot {experience.user.name} an <a href={`mailto:${experience.user.email}?Subject=Friend%20From%20iTravel`} target="_top">email</a></h5>
         </div>
 
-        <Comments comments={experience.comments} onPost={this.handleCommentPost}/>
+        <Comments loadExp={this.HandleReload} comments={experience.comments} onPost={this.handleCommentPost}/>
       </div>
     );
   }
