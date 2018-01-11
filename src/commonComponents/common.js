@@ -2,7 +2,7 @@ import React from 'react';
 
 export function InputField({ fieldName, type = 'text' }){
   return(
-    <div className="field">
+    <div style={{ margin: '0 2%' }} className="field">
       <div className="control">
         <input
           name= {fieldName}
@@ -17,10 +17,9 @@ export function InputField({ fieldName, type = 'text' }){
 
 export function Hero({ title }){
   return (
-    <section className="hero is-dark">
+    <section className="hero is-white">
       <div className="hero-body">
         <div className="container">
-          <h2 className="title">{title}</h2>
         </div>
       </div>
     </section>

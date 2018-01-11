@@ -14,15 +14,13 @@ class Feed extends PureComponent {
     if(!this.props.feed) return <div>No Experiences have been posted yet</div>;
     
     return (
-      <div style={{ display:'flex', marginLeft:'10%' }}>
-        <FeedDiv>
-          {this.props.feed.filter(exp => exp.images.length > 0).map(exp =>(
-            <Link key={exp._id} to={`experiences/${exp._id}`}>
-              <StyledImg src={exp.images[0].imageURI} alt={exp.images[0].caption}/>
-            </Link>
-          ))}
-        </FeedDiv>
-      </div>
+      <FeedDiv>
+        {this.props.feed.filter(exp => exp.images.length > 0).map(exp =>(
+          <Link key={exp._id} to={`experiences/${exp._id}`}>
+            <StyledImg src={exp.images[0].imageURI} alt={exp.images[0].caption}/>
+          </Link>
+        ))}
+      </FeedDiv>
     );
   }
 }
@@ -35,14 +33,15 @@ export default connect(
 const StyledImg = styled.img`
 height: 200px;
 margin: 1% 0;
-width: 300px;
+width: 240px;
 objectFit: 'cover';
 `;
 
 const FeedDiv = styled.div`
 height: 100px;
+width: 100%;
 display: grid;
 grid-template-areas: "a a a";
-grid-gap: 10px;
+grid-gap: 20px;
 grid-auto-columns: 250px;
 `;

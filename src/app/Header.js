@@ -9,6 +9,7 @@ class Header extends PureComponent {
     return (
       <div className="header">
         <nav className="breadcrumb">
+          <NavLinkWrap to="/"/>
           <NavLinkWrap to="/home"/>
           <NavLinkWrap to="/search"/>            
           <NavLinkWrap to="/upload"/>

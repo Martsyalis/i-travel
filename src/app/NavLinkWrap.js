@@ -9,7 +9,7 @@ class NavLinkWrap extends PureComponent{
         activeClassName="active"
         className="navbar-item"
       >
-        {this.props.to === '/home'
+        {this.props.to === '/'
           ? <img src={require('../resources/logo.png')} alt='Travel_Share Logo'/>
           : this.props.to.charAt(1).toUpperCase() + this.props.to.slice(2)
         }

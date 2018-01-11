@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import io from 'socket.io-client';
 import Comments from './Comments';
 import {
   loadExp,
@@ -8,9 +9,8 @@ import {
   addCommentToExp
 } from './actions';
 import styled from 'styled-components';
-import io from 'socket.io-client';
-const socket = io();
 
+const socket = io();
 
 export class Experience extends PureComponent {
   state = {

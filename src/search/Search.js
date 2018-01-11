@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { loadSearch } from './actions';
 import styled from 'styled-components';
 import { InputField, Hero } from '../commonComponents/common';
+import { CLIENT_RENEG_LIMIT } from 'tls';
 
 class Results extends PureComponent {
 
@@ -11,15 +12,13 @@ class Results extends PureComponent {
     const { results } = this.props;
     if(!results) return <div> No Matching Experiences found </div>;
     return (
-      <div style={{ display:'flex', marginLeft:'10%' }}>
-        <ResultsDiv>
-          {results.filter(exp => exp.images.length > 0).map(exp =>(
-            <Link key={exp._id} to={`experiences/${exp._id}`}>
-              <StyledImg src={exp.images[0].imageURI} alt={exp.images[0].caption}/>
-            </Link>
-          ))}
-        </ResultsDiv>
-      </div>
+      <ResultsDiv>
+        {results.filter(exp => exp.images.length > 0).map(exp =>(
+          <Link key={exp._id} to={`experiences/${exp._id}`}>
+            <StyledImg src={exp.images[0].imageURI} alt={exp.images[0].caption}/>
+          </Link>
+        ))}
+      </ResultsDiv>
     );
   }
 }
@@ -46,7 +45,7 @@ export class Search extends PureComponent {
             <button type="submit">Search</button>
           </form>
         </div>
-        <div className="column is-four-fifths is-light">
+        <div style={{ display: 'flex', justifyContent:'center' }}>
           <Results results ={this.props.search}/>
         </div>
       </div>

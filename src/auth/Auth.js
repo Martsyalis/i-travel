@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { signin, signup } from './actions';
 import styled from 'styled-components';
 import Credentials from './Credentials';
+import { Hero } from '../commonComponents/common';
 
 class Auth extends PureComponent {
   render() {
@@ -14,18 +15,11 @@ class Auth extends PureComponent {
     if (this.props.user) return <Redirect to={redirect} />;
 
     return (
-      <div className="container">
-        <section className="hero is-dark">
-          <div className="hero-body">
-            <h1 className="title">Welcome!</h1>
-            <h2 className="subtitle">
-              <Link to="/auth/signin"> Sign In Here </Link> if you already
-              have an account with us or <Link to="/auth/signup">
-                Sign Up here
-              </Link>
-            </h2>
-          </div>
-        </section>
+      <div>
+        <Hero title="Welcome"/>
+        <Link to="/auth/signin"> Sign In </Link> if you already
+              have an account with us or <Link to="/auth/signup">Sign Up
+        </Link>
         <Switch>
           <Route
             path="/auth/signin"

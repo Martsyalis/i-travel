@@ -3,8 +3,9 @@ import Feed from './Feed';
 import { connect } from 'react-redux';
 import { loadExpByUser } from '../experience/actions';
 import { updateProfile } from '../auth/actions';
+import { Hero } from '../commonComponents/common'; 
+const defaultImg = require('./latte.jpg');
 
-const defaultImg = 'http://www.beautythis.com/themes/comb/img/avatar/default-avatar-male_11.png';
 export class Home extends PureComponent {
   
   state={ shouldDisplay: false }
@@ -20,16 +21,9 @@ export class Home extends PureComponent {
   render() {
     return (
       <div>
-        <section className="hero is-dark">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title">iTravel</h1>
-              <h2 className="subtitle">Slogan</h2>
-            </div>
-          </div>
-        </section>
-        <div className="columns">
-          <div className="column is-one-fifth">
+        <Hero title ="Home"/>
+        <div className="columns" style={{ display: 'flex', justifyContent: 'center' }}>
+          <div>
             <div>
               <h2 className="title has-text-centered">{this.props.user.name}</h2>
               <div style = {{ display: 'flex', justifyContent: 'center' }}>
@@ -77,8 +71,9 @@ export class Home extends PureComponent {
               }
             </div>
           </div>
-          <div className="column is-four-fifths is-light">
-            <Feed />
+          <div style={{ width: '5%' }}/>
+          <div>
+            <Feed/>
           </div>
         </div>
       </div>
