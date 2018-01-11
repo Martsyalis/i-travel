@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { loadSearch } from './actions';
 import styled from 'styled-components';
 import { InputField, Hero } from '../commonComponents/common';
-import { CLIENT_RENEG_LIMIT } from 'tls';
 
 class Results extends PureComponent {
 
