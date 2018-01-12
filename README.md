@@ -1,6 +1,6 @@
 # Website: https://travelshareapp.herokuapp.com
 
-# I-Travel
+# Travel Share
 An app that lets you explore the wide world of travel with pictures and stories from people who have traveled there.
 
 # Tech Used
