@@ -1,5 +1,13 @@
+# Website: https://travelshareapp.herokuapp.com
+
 # I-Travel
-An app that lets you explore the wide world of travel with pictures and stories from people who have traveled there. 
+An app that lets you explore the wide world of travel with pictures and stories from people who have traveled there.
+
+# Tech Used
+AWS S3 for image uploads and storage, 
+Redux for state managment,
+Sockets.io for web sockets use in live chat.
+
 
 ## Requirements
 
@@ -11,7 +19,7 @@ MongoDB, latest stable version of Node.js
 1. Clone repository and change directory.
 
     ```
-    git clone https://github.com/tbdello/i-travel 
+    git clone https://github.com/martsyalis/travel-share 
     ```
 
 1. Install dependencies.
@@ -22,9 +30,9 @@ MongoDB, latest stable version of Node.js
 
 This app relies on a server, found at:
 
-https://github.com/tbdello/i-travel-server
+https://github.com/Martsyalis/travel-share-server
 
-The default port is 3000.
+and your own AWS keys.
 
 ## Usage
 
