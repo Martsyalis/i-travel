@@ -22,7 +22,7 @@ MongoDB, latest stable version of Node.js
     git clone https://github.com/martsyalis/travel-share 
     ```
 
-1. Install dependencies.
+2. Install dependencies.
 
     ```
     npm install
