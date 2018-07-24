@@ -1,7 +1,7 @@
 # Website: https://travelshareapp.herokuapp.com
 
 # Travel Share
-An app that lets you explore the wide world of travel with pictures and stories from people who have traveled there.
+This is a fork of an app my team worked on for our final project in Alchemy Code Lab.It lets you explore the wide world of travel with pictures and stories from people who have traveled there. This fork has refactored code and uses Sockets.io for live chat. Original can be faund at https://github.com/tbdello/i-travel
 
 # Tech Used
 AWS S3 for image uploads and storage, 
