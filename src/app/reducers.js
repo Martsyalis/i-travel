@@ -1,6 +1,6 @@
-export const LOADING = "LOADING";
-export const LOADED = "LOADED";
-export const ERROR = "ERROR";
+export const LOADING = 'LOADING';
+export const LOADED = 'LOADED';
+export const ERROR = 'ERROR';
 
 export function loading(state = false, { type }) {
   switch (type) {

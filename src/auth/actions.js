@@ -1,6 +1,6 @@
-import * as actions from "./constants";
-import authApi from "../services/authApi";
-import { getStoredToken } from "../services/request";
+import * as actions from './constants';
+import authApi from '../services/authApi';
+import { getStoredToken } from '../services/request';
 
 export function checkForToken() {
   return dispatch => {

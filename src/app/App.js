@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { connect } from "react-redux";
-import { checkForToken } from "../auth/actions";
-import Routes from "./Routes";
-import Header from "./Header";
-import Loading from "./Loading";
-import Error from "./Error";
+import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { checkForToken } from '../auth/actions';
+import Routes from './Routes';
+import Header from './Header';
+import Loading from './Loading';
+import Error from './Error';
 
 export class App extends Component {
   componentDidMount() {

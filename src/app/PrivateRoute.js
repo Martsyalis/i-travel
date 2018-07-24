@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
-import { Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { PureComponent } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class PrivateRoute extends PureComponent {
   render() {
@@ -15,7 +15,7 @@ class PrivateRoute extends PureComponent {
           return (
             <Redirect
               to={{
-                pathname: "/auth/signin",
+                pathname: '/auth/signin',
                 state: { from: props.location.pathname }
               }}
             />

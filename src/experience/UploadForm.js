@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { addExperience } from "./actions";
-import { InputField, Hero } from "../commonComponents/common";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { addExperience } from './actions';
+import { InputField, Hero } from '../commonComponents/common';
 
 export class UploadForm extends PureComponent {
   handleExpPost = event => {
@@ -12,7 +12,7 @@ export class UploadForm extends PureComponent {
       description: elements.description.value,
       location: elements.location.value,
       user: this.props.user._id,
-      tags: elements.tags.value.split(" ")
+      tags: elements.tags.value.split(' ')
     };
     this.props.addExperience(exp).then(({ _id }) => {
       this.props.history.push(`/experiences/${_id}`);

@@ -1,9 +1,9 @@
-import { request } from "./request";
+import { request } from './request';
 
-const URL = "/experiences";
+const URL = '/experiences';
 
 export default {
-  search(query = "") {
+  search(query = '') {
     return request.get(`${URL}/search/${query}`);
   },
   get(id) {

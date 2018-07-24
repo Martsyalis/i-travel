@@ -1,4 +1,4 @@
-import experiencesApi from "../services/experiences-Api";
+import experiencesApi from '../services/experiences-Api';
 import {
   EXPERIENCE_LOAD,
   DELETE_EXP,
@@ -7,7 +7,7 @@ import {
   ADD_IMAGE_TO_EXP,
   DELETE_IMAGE_FROM_EXP,
   ADD_COMMENT_TO_EXP
-} from "./reducers";
+} from './reducers';
 
 export function loadExp(id) {
   return {

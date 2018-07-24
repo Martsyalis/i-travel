@@ -1,10 +1,10 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { loadExpByUser, deleteExp } from "../experience/actions";
-import { Link } from "react-router-dom";
-import stock from "./favicon.png";
-import { Hero } from "../commonComponents/common";
-import styled from "styled-components";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { loadExpByUser, deleteExp } from '../experience/actions';
+import { Link } from 'react-router-dom';
+import stock from './favicon.png';
+import { Hero } from '../commonComponents/common';
+import styled from 'styled-components';
 
 class Home extends PureComponent {
   componentDidMount() {
@@ -21,7 +21,7 @@ class Home extends PureComponent {
       <div>
         <Hero title="Shared Experiences" />
         <h4>Here are Experiences you've shared</h4>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <GridDiv>
             {expByUser.map((exp, i) => (
               <div key={i}>
@@ -29,10 +29,10 @@ class Home extends PureComponent {
                   <Link to={`experiences/${exp._id}`}>
                     <img
                       style={{
-                        objectFit: "cover",
-                        width: "200px",
-                        height: "120px",
-                        margin: "10px"
+                        objectFit: 'cover',
+                        width: '200px',
+                        height: '120px',
+                        margin: '10px'
                       }}
                       src={
                         exp.images && exp.images[0]
@@ -42,7 +42,7 @@ class Home extends PureComponent {
                       alt={
                         exp.images && exp.images[0]
                           ? exp.images[0].caption
-                          : "stock image"
+                          : 'stock image'
                       }
                     />
                   </Link>
@@ -70,7 +70,7 @@ export default connect(
 const GridDiv = styled.div`
   height: 100px;
   display: grid;
-  grid-template-areas: "a a a";
+  grid-template-areas: 'a a a';
   grid-gap: 10px;
   grid-auto-columns: 250px;
 `;

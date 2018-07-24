@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { loadSearch } from "./actions";
-import styled from "styled-components";
-import { InputField, Hero } from "../commonComponents/common";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { loadSearch } from './actions';
+import styled from 'styled-components';
+import { InputField, Hero } from '../commonComponents/common';
 
 class Results extends PureComponent {
   render() {
@@ -48,7 +48,7 @@ export class Search extends PureComponent {
             <button type="submit">Search</button>
           </form>
         </div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Results results={this.props.search} />
         </div>
       </div>
@@ -64,7 +64,7 @@ export default connect(
 const ResultsDiv = styled.div`
   height: 100px;
   display: grid;
-  grid-template-areas: "a a a";
+  grid-template-areas: 'a a a';
   grid-gap: 10px;
   grid-auto-columns: 250px;
 `;
@@ -73,5 +73,5 @@ const StyledImg = styled.img`
   height: 200px;
   margin: 1% 0;
   width: 300px;
-  objectfit: "cover";
+  objectfit: 'cover';
 `;

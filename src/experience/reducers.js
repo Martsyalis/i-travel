@@ -1,11 +1,11 @@
-export const EXPERIENCE_LOAD = "EXPERIENCE_LOAD";
-export const FEED_LOAD = "FEED_LOAD";
-export const EXPERIENCE_ADD = "EXPERIENCE_ADD";
-export const LOAD_USER_EXP = "LOAD_USER_EXP";
-export const ADD_IMAGE_TO_EXP = "ADD_IMAGE_TO_EXP";
-export const DELETE_EXP = "DELETE_EXP";
-export const DELETE_IMAGE_FROM_EXP = "DELETE_IMAGE_FROM_EXP";
-export const ADD_COMMENT_TO_EXP = " ADD_COMMENT_TO_EXP";
+export const EXPERIENCE_LOAD = 'EXPERIENCE_LOAD';
+export const FEED_LOAD = 'FEED_LOAD';
+export const EXPERIENCE_ADD = 'EXPERIENCE_ADD';
+export const LOAD_USER_EXP = 'LOAD_USER_EXP';
+export const ADD_IMAGE_TO_EXP = 'ADD_IMAGE_TO_EXP';
+export const DELETE_EXP = 'DELETE_EXP';
+export const DELETE_IMAGE_FROM_EXP = 'DELETE_IMAGE_FROM_EXP';
+export const ADD_COMMENT_TO_EXP = ' ADD_COMMENT_TO_EXP';
 
 export function experiences(state = [], { type, payload }) {
   switch (type) {

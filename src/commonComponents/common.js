@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-export function InputField({ fieldName, type = "text" }) {
+export function InputField({ fieldName, type = 'text' }) {
   return (
-    <div style={{ margin: "0 2%" }} className="field">
+    <div style={{ margin: '0 2%' }} className="field">
       <div className="control">
         <input
           name={fieldName}

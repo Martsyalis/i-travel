@@ -1,5 +1,5 @@
-import experiencesApi from "../services/experiences-Api";
-import { SEARCH_LOAD } from "./reducers";
+import experiencesApi from '../services/experiences-Api';
+import { SEARCH_LOAD } from './reducers';
 
 export function loadSearch(query) {
   return dispatch => {

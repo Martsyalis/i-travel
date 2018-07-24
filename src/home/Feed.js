@@ -1,8 +1,8 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { loadFeed } from "./actions";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { loadFeed } from './actions';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 class Feed extends PureComponent {
   componentDidMount() {
@@ -36,14 +36,14 @@ const StyledImg = styled.img`
   height: 200px;
   margin: 1% 0;
   width: 240px;
-  objectfit: "cover";
+  objectfit: 'cover';
 `;
 
 const FeedDiv = styled.div`
   height: 100px;
   width: 100%;
   display: grid;
-  grid-template-areas: "a a a";
+  grid-template-areas: 'a a a';
   grid-gap: 20px;
   grid-auto-columns: 250px;
 `;

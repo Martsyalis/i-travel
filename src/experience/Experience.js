@@ -1,14 +1,14 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import io from "socket.io-client";
-import Comments from "./Comments";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import io from 'socket.io-client';
+import Comments from './Comments';
 import {
   loadExp,
   DeleteImage,
   addImageToExp,
   addCommentToExp
-} from "./actions";
-import styled from "styled-components";
+} from './actions';
+import styled from 'styled-components';
 
 const socket = io();
 
@@ -23,22 +23,22 @@ export class Experience extends PureComponent {
   }
 
   HandleReload = () => {
-    console.log("reloading");
+    console.log('reloading');
     this.props.loadExp(this.props.id);
   };
 
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleArrows);
+    document.removeEventListener('keydown', this.handleArrows);
   }
 
   startListener = () => {
-    document.addEventListener("keydown", this.handleArrows);
+    document.addEventListener('keydown', this.handleArrows);
   };
 
   handleArrows = ({ key }) => {
-    if (key === "ArrowLeft" && this.state.index !== 0) this.handleClick(-1);
+    if (key === 'ArrowLeft' && this.state.index !== 0) this.handleClick(-1);
     if (
-      key === "ArrowRight" &&
+      key === 'ArrowRight' &&
       this.state.index !== this.props.experience.images.length - 1
     )
       this.handleClick(1);
@@ -54,9 +54,9 @@ export class Experience extends PureComponent {
 
   handleCommentPost = comment => {
     const { id, user, addCommentToExp } = this.props;
-    const name = user ? user.name : "guest";
+    const name = user ? user.name : 'guest';
     addCommentToExp(id, { name, comment }).then(() =>
-      socket.emit("chat", comment)
+      socket.emit('chat', comment)
     );
   };
 
@@ -95,8 +95,8 @@ export class Experience extends PureComponent {
                   : this.setState({ shouldDisplay: true });
               }}
             >
-              {" "}
-              AddImage{" "}
+              {' '}
+              AddImage{' '}
             </button>
           )}
         <div>
@@ -123,18 +123,18 @@ export class Experience extends PureComponent {
                       className="button"
                       onClick={() => this.handleClick(-1)}
                     >
-                      {" "}
+                      {' '}
                       ◀
                     </StyledButton>
                   )}
 
                   <StyledImgDiv>
                     <img
-                      style={{ objectFit: "cover" }}
+                      style={{ objectFit: 'cover' }}
                       src={img.imageURI}
                       alt={img.caption}
                     />
-                    <p style={{ marginLeft: "40%" }}> {img.caption} </p>
+                    <p style={{ marginLeft: '40%' }}> {img.caption} </p>
                   </StyledImgDiv>
                   <div>
                     {this.props.user &&
@@ -152,8 +152,8 @@ export class Experience extends PureComponent {
                       className="button"
                       onClick={() => this.handleClick(1)}
                     >
-                      {" "}
-                      ▶{" "}
+                      {' '}
+                      ▶{' '}
                     </StyledButton>
                   )}
                 </ImgDiv>
@@ -168,8 +168,8 @@ export class Experience extends PureComponent {
           Tags:{experience.tags &&
             experience.tags.map((tag, i) => <span key={i}> {tag} </span>)}
           <h5>
-            {" "}
-            Have questions? shoot {experience.user.name} an{" "}
+            {' '}
+            Have questions? shoot {experience.user.name} an{' '}
             <a
               href={`mailto:${
                 experience.user.email
@@ -207,12 +207,12 @@ justify-content: center;
 const StyledDiv = styled.div`
   width: 70%;
   margin: auto;
-  display: "flex";
+  display: 'flex';
   justify-content: flex-center;
 `;
 
 const ImgDiv = styled.div`
-  display: ${props => (props.shouldDisplay ? "flex" : "none")};
+  display: ${props => (props.shouldDisplay ? 'flex' : 'none')};
   flex-direction: row;
   justify-content: flex-start;
   overflow: hidden;

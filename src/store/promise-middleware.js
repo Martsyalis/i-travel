@@ -1,5 +1,5 @@
-import { LOADING, LOADED, ERROR } from "../app/reducers";
-const isPromise = val => val && typeof val.then === "function";
+import { LOADING, LOADED, ERROR } from '../app/reducers';
+const isPromise = val => val && typeof val.then === 'function';
 
 export default ({ dispatch }) => next => async action => {
   if (!isPromise(action.payload)) return next(action);

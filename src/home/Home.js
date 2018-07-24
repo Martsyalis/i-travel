@@ -1,10 +1,10 @@
-import React, { PureComponent } from "react";
-import Feed from "./Feed";
-import { connect } from "react-redux";
-import { loadExpByUser } from "../experience/actions";
-import { updateProfile } from "../auth/actions";
-import { Hero } from "../commonComponents/common";
-const defaultImg = require("./latte.jpg");
+import React, { PureComponent } from 'react';
+import Feed from './Feed';
+import { connect } from 'react-redux';
+import { loadExpByUser } from '../experience/actions';
+import { updateProfile } from '../auth/actions';
+import { Hero } from '../commonComponents/common';
+const defaultImg = require('./latte.jpg');
 
 export class Home extends PureComponent {
   state = { shouldDisplay: false };
@@ -23,20 +23,20 @@ export class Home extends PureComponent {
         <Hero title="Home" />
         <div
           className="columns"
-          style={{ display: "flex", justifyContent: "center" }}
+          style={{ display: 'flex', justifyContent: 'center' }}
         >
           <div>
             <div>
               <h2 className="title has-text-centered">
                 {this.props.user.name}
               </h2>
-              <div style={{ display: "flex", justifyContent: "center" }}>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <img
                   style={{
-                    borderRadius: "50%",
-                    width: "250px",
-                    height: "250px",
-                    objectFit: "cover"
+                    borderRadius: '50%',
+                    width: '250px',
+                    height: '250px',
+                    objectFit: 'cover'
                   }}
                   alt="avatar"
                   src={this.props.user.imageURI || defaultImg}
@@ -88,7 +88,7 @@ export class Home extends PureComponent {
               )}
             </div>
           </div>
-          <div style={{ width: "5%" }} />
+          <div style={{ width: '5%' }} />
           <div>
             <Feed />
           </div>

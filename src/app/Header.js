@@ -1,8 +1,8 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import NavLinkWrap from "./NavLinkWrap";
-import { NavLink, withRouter } from "react-router-dom";
-import { signout } from "../auth/actions";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import NavLinkWrap from './NavLinkWrap';
+import { NavLink, withRouter } from 'react-router-dom';
+import { signout } from '../auth/actions';
 
 class Header extends PureComponent {
   render() {
@@ -20,13 +20,13 @@ class Header extends PureComponent {
               to="/"
               onClick={this.props.signout}
             >
-              {" "}
-              Sign Out{" "}
+              {' '}
+              Sign Out{' '}
             </NavLink>
           ) : (
             <NavLink activeClassName="active" to="/auth/signin">
-              {" "}
-              Sign In{" "}
+              {' '}
+              Sign In{' '}
             </NavLink>
           )}
         </nav>

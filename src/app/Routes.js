@@ -1,12 +1,12 @@
-import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import Home from "../home/Home";
-import Auth from "../auth/Auth";
-import PrivateRoute from "./PrivateRoute";
-import Experience from "../experience/Experience";
-import UploadForm from "../experience/UploadForm";
-import MyExp from "../home/MyExp";
-import Search from "../search/Search";
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Home from '../home/Home';
+import Auth from '../auth/Auth';
+import PrivateRoute from './PrivateRoute';
+import Experience from '../experience/Experience';
+import UploadForm from '../experience/UploadForm';
+import MyExp from '../home/MyExp';
+import Search from '../search/Search';
 
 export default () => (
   <Switch>

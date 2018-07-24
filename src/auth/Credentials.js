@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default class Credentials extends React.PureComponent {
   handleSubmit = e => {
@@ -14,7 +14,7 @@ export default class Credentials extends React.PureComponent {
   render() {
     return (
       <form
-        style={{ margin: "auto", width: "30%" }}
+        style={{ margin: 'auto', width: '30%' }}
         onSubmit={this.handleSubmit}
       >
         {this.props.allowName && (

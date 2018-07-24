@@ -1,4 +1,4 @@
-export const FEED_LOAD = "FEED_LOAD";
+export const FEED_LOAD = 'FEED_LOAD';
 
 export function feed(state = [], { type, payload }) {
   switch (type) {
