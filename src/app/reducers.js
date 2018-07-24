@@ -1,9 +1,9 @@
-export const LOADING = 'LOADING';
-export const LOADED = 'LOADED';
-export const ERROR = 'ERROR';
+export const LOADING = "LOADING";
+export const LOADED = "LOADED";
+export const ERROR = "ERROR";
 
 export function loading(state = false, { type }) {
-  switch(type) {
+  switch (type) {
     case LOADING:
       return true;
     case LOADED:
@@ -15,7 +15,7 @@ export function loading(state = false, { type }) {
 }
 
 export function error(state = null, { type, payload }) {
-  switch(type) {
+  switch (type) {
     case ERROR:
       return payload;
     case LOADING:

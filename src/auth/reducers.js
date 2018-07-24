@@ -1,10 +1,11 @@
-import { combineReducers } from 'redux';
-import * as ACTIONS from './constants';
+import { combineReducers } from "redux";
+import * as ACTIONS from "./constants";
 
-export default (state = {}, action) => combineReducers({ user, token, error, checkedToken })(state, action);
+export default (state = {}, action) =>
+  combineReducers({ user, token, error, checkedToken })(state, action);
 
 export function user(state = null, { type, payload }) {
-  switch(type) {
+  switch (type) {
     case ACTIONS.SET_CURRENT_USER:
     case ACTIONS.UPDATE_PROFILE:
       return payload;
@@ -19,19 +20,19 @@ export function user(state = null, { type, payload }) {
 }
 
 export function token(state = null, { type, payload }) {
-  switch(type) {
+  switch (type) {
     case ACTIONS.GOT_TOKEN:
       return payload;
     case ACTIONS.LOGOUT:
     case ACTIONS.AUTH_FAILED:
       return null;
     default:
-      return state; 
+      return state;
   }
 }
 
 export function error(state = null, { type, payload }) {
-  switch(type) {
+  switch (type) {
     case ACTIONS.AUTH_FAILED:
       return payload;
     case ACTIONS.LOGOUT:
@@ -44,7 +45,7 @@ export function error(state = null, { type, payload }) {
 }
 
 export function checkedToken(state = false, { type, payload }) {
-  switch(type) {
+  switch (type) {
     case ACTIONS.CHECKED_TOKEN:
     case ACTIONS.SET_CURRENT_USER:
     case ACTIONS.AUTH_FAILED:

@@ -1,22 +1,21 @@
-import React from 'react';
+import React from "react";
 
-import { shallow } from 'enzyme';
+import { shallow } from "enzyme";
 
-import { App } from '../app/App';
+import { App } from "../app/App";
 
-describe('App', () => {
-
-  it('shows the App component', () => {
-    const checkedToken = 'test';
+describe("App", () => {
+  it("shows the App component", () => {
+    const checkedToken = "test";
     const loading = false;
     const error = null;
     const checkForToken = () => {};
 
     const wrapper = shallow(
-      <App 
+      <App
         checkedToken={checkedToken}
-        loading={loading} 
-        error={error} 
+        loading={loading}
+        error={error}
         checkForToken={checkForToken}
       />
     );

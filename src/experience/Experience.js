@@ -1,14 +1,14 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import io from 'socket.io-client';
-import Comments from './Comments';
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import io from "socket.io-client";
+import Comments from "./Comments";
 import {
   loadExp,
   DeleteImage,
   addImageToExp,
   addCommentToExp
-} from './actions';
-import styled from 'styled-components';
+} from "./actions";
+import styled from "styled-components";
 
 const socket = io();
 
@@ -22,23 +22,23 @@ export class Experience extends PureComponent {
     this.startListener();
   }
 
-  HandleReload = ()=>{
-    console.log('reloading');
+  HandleReload = () => {
+    console.log("reloading");
     this.props.loadExp(this.props.id);
-  }
+  };
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleArrows);
+    document.removeEventListener("keydown", this.handleArrows);
   }
 
   startListener = () => {
-    document.addEventListener('keydown', this.handleArrows);
+    document.addEventListener("keydown", this.handleArrows);
   };
 
   handleArrows = ({ key }) => {
-    if (key === 'ArrowLeft' && this.state.index !== 0) this.handleClick(-1);
+    if (key === "ArrowLeft" && this.state.index !== 0) this.handleClick(-1);
     if (
-      key === 'ArrowRight' &&
+      key === "ArrowRight" &&
       this.state.index !== this.props.experience.images.length - 1
     )
       this.handleClick(1);
@@ -54,9 +54,11 @@ export class Experience extends PureComponent {
 
   handleCommentPost = comment => {
     const { id, user, addCommentToExp } = this.props;
-    const name = (user) ? user.name : 'guest';
-    addCommentToExp(id, { name, comment }).then(()=> socket.emit('chat', comment));
-  }
+    const name = user ? user.name : "guest";
+    addCommentToExp(id, { name, comment }).then(() =>
+      socket.emit("chat", comment)
+    );
+  };
 
   handleDelete = imageId => {
     this.props.DeleteImage(this.props.id, imageId);
@@ -83,68 +85,115 @@ export class Experience extends PureComponent {
             </div>
           </div>
         </section>
-        { this.props.user && experience.user.email === this.props.user.email
-         && <button className="button" onClick={()=>{
-           this.state.shouldDisplay
-             ? this.setState({ shouldDisplay: false })
-             : this.setState({ shouldDisplay: true });
-         }}> AddImage </button>
-        }
+        {this.props.user &&
+          experience.user.email === this.props.user.email && (
+            <button
+              className="button"
+              onClick={() => {
+                this.state.shouldDisplay
+                  ? this.setState({ shouldDisplay: false })
+                  : this.setState({ shouldDisplay: true });
+              }}
+            >
+              {" "}
+              AddImage{" "}
+            </button>
+          )}
         <div>
-          { this.state.shouldDisplay
-           &&
-          <form onSubmit={this.handleImgPost}> 
-            <input
-              type="file"
-              name="image"
-              accept=".jpg, .jpeg, .png, .svg" 
-              placeholder="Insert file"
-            />
-            <input name="caption" placeholder="caption"/>
-            <button type="submit">Add</button>
-          </form>
-          } 
+          {this.state.shouldDisplay && (
+            <form onSubmit={this.handleImgPost}>
+              <input
+                type="file"
+                name="image"
+                accept=".jpg, .jpeg, .png, .svg"
+                placeholder="Insert file"
+              />
+              <input name="caption" placeholder="caption" />
+              <button type="submit">Add</button>
+            </form>
+          )}
         </div>
         <StyledDiv>
-          {experience.images
-            ?(<div>
+          {experience.images ? (
+            <div>
               {experience.images.map((img, i, array) => (
-                <ImgDiv key={img._id} shouldDisplay ={this.state.index === i}>
-                  {i !== 0 && <StyledButton className="button" onClick ={()=> this.handleClick(-1)}> ◀</StyledButton>}
-                  
+                <ImgDiv key={img._id} shouldDisplay={this.state.index === i}>
+                  {i !== 0 && (
+                    <StyledButton
+                      className="button"
+                      onClick={() => this.handleClick(-1)}
+                    >
+                      {" "}
+                      ◀
+                    </StyledButton>
+                  )}
+
                   <StyledImgDiv>
-                    <img style={{ objectFit:'cover' }} src={img.imageURI} alt={img.caption}/>
-                    <p style={{ marginLeft: '40%' }}> {img.caption} </p>
+                    <img
+                      style={{ objectFit: "cover" }}
+                      src={img.imageURI}
+                      alt={img.caption}
+                    />
+                    <p style={{ marginLeft: "40%" }}> {img.caption} </p>
                   </StyledImgDiv>
                   <div>
-                    {this.props.user && experience.user.email === this.props.user.email
-                     &&<DeleteButton className ="delete" onClick={() => this.handleDelete(img._id)}>X</DeleteButton>
-                    }
+                    {this.props.user &&
+                      experience.user.email === this.props.user.email && (
+                        <DeleteButton
+                          className="delete"
+                          onClick={() => this.handleDelete(img._id)}
+                        >
+                          X
+                        </DeleteButton>
+                      )}
                   </div>
-                  { i !== array.length -1
-                     && <StyledButton className="button" onClick ={()=> this.handleClick(1)}> ▶ </StyledButton>}
+                  {i !== array.length - 1 && (
+                    <StyledButton
+                      className="button"
+                      onClick={() => this.handleClick(1)}
+                    >
+                      {" "}
+                      ▶{" "}
+                    </StyledButton>
+                  )}
                 </ImgDiv>
               ))}
-            </div>)
-            :<div> No images uploaded yet </div>
-          }
+            </div>
+          ) : (
+            <div> No images uploaded yet </div>
+          )}
           <h5> {experience.description} </h5>
         </StyledDiv>
         <div>
-          Tags:{experience.tags
-             && experience.tags.map((tag, i) =>(<span key={i}>  {tag} </span>))}
-          <h5> Have questions? shoot {experience.user.name} an <a href={`mailto:${experience.user.email}?Subject=Friend%20From%20iTravel`} target="_top">email</a></h5>
+          Tags:{experience.tags &&
+            experience.tags.map((tag, i) => <span key={i}> {tag} </span>)}
+          <h5>
+            {" "}
+            Have questions? shoot {experience.user.name} an{" "}
+            <a
+              href={`mailto:${
+                experience.user.email
+              }?Subject=Friend%20From%20iTravel`}
+              target="_top"
+            >
+              email
+            </a>
+          </h5>
         </div>
 
-        <Comments loadExp={this.HandleReload} comments={experience.comments} onPost={this.handleCommentPost}/>
+        <Comments
+          loadExp={this.HandleReload}
+          comments={experience.comments}
+          onPost={this.handleCommentPost}
+        />
       </div>
     );
   }
 }
 
 const StyledButton = styled.div`
-margin-top: 30%;
-margin-right: 2%;
+  margin-top: 30%;
+  margin-right: 2%;
 `;
 
 const StyledImgDiv = styled.div`
@@ -156,14 +205,14 @@ flex-direction: column;
 justify-content: center;
 `;
 const StyledDiv = styled.div`
-width: 70%;
-margin: auto;
-display: 'flex';
-justify-content: flex-center;
+  width: 70%;
+  margin: auto;
+  display: "flex";
+  justify-content: flex-center;
 `;
 
 const ImgDiv = styled.div`
-  display: ${props => (props.shouldDisplay ? 'flex' : 'none')};
+  display: ${props => (props.shouldDisplay ? "flex" : "none")};
   flex-direction: row;
   justify-content: flex-start;
   overflow: hidden;
@@ -175,14 +224,14 @@ const DeleteButton = styled.button`
 `;
 
 export default connect(
-  state => ({ 
-    user: state.auth.user, 
-    experiences: state.experiences 
+  state => ({
+    user: state.auth.user,
+    experiences: state.experiences
   }),
   { loadExp, addImageToExp, DeleteImage, addCommentToExp },
   ({ user, experiences }, actions, { id }) => ({
     user,
-    experience: experiences.find(exp =>exp._id === id),
+    experience: experiences.find(exp => exp._id === id),
     id,
     ...actions
   })

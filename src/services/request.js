@@ -1,24 +1,23 @@
-import store from '../store/store';
-import superagent from 'superagent';
+import store from "../store/store";
+import superagent from "superagent";
 
-let token = '';
+let token = "";
 
 const storage = window.localStorage;
 store.subscribe(() => {
   const { token: newToken } = store.getState().auth;
-  if(newToken !== token) {
+  if (newToken !== token) {
     token = newToken;
-    token ? storage.token = token : storage.clear('token');
+    token ? (storage.token = token) : storage.clear("token");
   }
 });
 
 export const getStoredToken = () => storage.token;
 
-export const API_URL = '/api';
+export const API_URL = "/api";
 
-const wrap = cmd => cmd
-  .set('Authorization', token)
-  .then(
+const wrap = cmd =>
+  cmd.set("Authorization", token).then(
     r => r.body,
     ({ response }) => {
       const { body, text } = response;
@@ -37,7 +36,7 @@ export const request = {
   delete(url) {
     return wrap(superagent.delete(`${API_URL}${url}`));
   },
-  put(url, data){
+  put(url, data) {
     return wrap(superagent.put(`${API_URL}${url}`).send(data));
   }
 };

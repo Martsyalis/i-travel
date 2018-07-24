@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { checkForToken } from '../auth/actions';
-import Routes from './Routes';
-import Header from './Header';
-import Loading from './Loading';
-import Error from './Error';
+import React, { Component } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { connect } from "react-redux";
+import { checkForToken } from "../auth/actions";
+import Routes from "./Routes";
+import Header from "./Header";
+import Loading from "./Loading";
+import Error from "./Error";
 
 export class App extends Component {
   componentDidMount() {
@@ -17,16 +17,16 @@ export class App extends Component {
     return (
       <Router>
         <div>
-          { checkedToken &&
+          {checkedToken && (
             <div className="App">
-              <Header/>
+              <Header />
               <main>
-                <Routes/>
+                <Routes />
               </main>
             </div>
-          }
-          {loading && <Loading/>}
-          {error && <Error/>}
+          )}
+          {loading && <Loading />}
+          {error && <Error />}
         </div>
       </Router>
     );
@@ -34,7 +34,7 @@ export class App extends Component {
 }
 
 export default connect(
-  state => ({ 
+  state => ({
     checkedToken: state.auth.checkedToken,
     loading: state.loading,
     error: state.error
